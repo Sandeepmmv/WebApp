@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+ <!-- link of bootstrap  -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+ <!-- css link  -->
+
+{% block title %}
+    <title>DGET MEDIA </title>
+    <link class="title-img" rel="icon" href="{% static 'Myapp\images\dgetlogo.jpg' %}">
+{% endblock title %}
+
+
+{% block script %}
+{% endblock script %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<div class="container-fluid mt-4 row">
+    <!-- setting nav -->
+    <div class="col-4">
+        <div class="cover-image border shadow bg-white p-2">
+            <div class="profile-image">
+                <img class="img-thumbnail rounded-circle " width="50"  src="{% static 'Myapp\images\dgetlogo.jpg' %}">
+                <h2 class="text-primary d-inline ">DGET MEDIA</h2>
+                <p >&copy;{{user.username}}</p>
+                <ol class="list-group ">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto ">
+                            <div class="fw-bold "><a class="text-decoration-none" href="">Account</a></div>
+                        </div>
+                        <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto ">
+                            <div class="fw-bold "><a class="text-decoration-none" href="">Privacy</a></div>
+                        </div>
+                        <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto ">
+                            <div class="fw-bold "><a class="text-decoration-none" href="">View Profile</a></div>
+                        </div>
+                        <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- form -->
+    <div class="col-8 my-3 ">
+        <form class="row g-3  border shadow " action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            
+            
+            <div class="col-12 ">
+              
+                <img src="{{user_profile.profileimage.url}}" class="d-block" width="100" height="100" alt="">
+                <label for="profileimage" class="form-label">Profile Image</label>
+                <input type="file" name="profileimage" class="form-control" id="profileimage">
+              </div>
+            <div class="col-12">
+              <label for="bio" class="form-label">Bio</label>
+              <input type="text" name="bio" class="form-control" value="{{user_profile.bio}}" id="bio" >
+              
+            </div>
+            
+            <div class="col-md-2">
+              <label for="birth_date" class="form-label">Date of Birth</label>
+              <input type="date" name="birth_date" class="form-control" id="birth_date" >
+              <label for="">{{user_profile.birth_date}}</label>
+            </div>
+            <div class="col-12">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="location" value="{{user_profile.location}}" class="form-control" id="location" placeholder="Location">
+              </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+            <div class="col-6 pb-2">
+              <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+            
+          </form>
+    </div>
+</div>
+{% endblock body %}
+
+</html>

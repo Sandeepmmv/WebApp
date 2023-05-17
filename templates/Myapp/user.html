@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+
+{% block title %}
+    <title>DGET MEDIA </title>
+    <link class="title-img" rel="icon" href="{% static 'Myapp\images\dgetlogo.jpg' %}">
+{% endblock title %}
+
+
+{% block script %}
+{% endblock script %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<!-- <h1>data</h1>
+{% for sts in data %}
+
+{{sts.values}}
+<br>
+{% endfor %}
+
+{% for sts in profilepic %}
+
+{{sts.values}}
+<br>
+{% endfor %}
+{% for sts in profile %}
+{{sts.values}}
+<br>
+{% endfor %}
+{% endblock body %}
+{% for sts in post %}
+{{sts.values}}
+<br>
+{% endfor %}
+{% for sts in like %}
+{{sts.values}}
+<br>
+{% endfor %}
+{% for sts in follow %}
+{{sts.values}}
+<br>
+{% endfor %}
+{% for sts in comment %}
+{{sts.values}}
+<br>
+{% endfor %} -->
+{% for fm in form %}
+    <div class="container my-3">
+        {{fm.label_tag}}
+        {{fm}}
+        <span style="color: red;" >{{fm.errors}}</span>
+    </div>
+    {% endfor %}
+</html>

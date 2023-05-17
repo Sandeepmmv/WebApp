@@ -1,0 +1,14 @@
+{% load static %}
+{% include 'Myapp/base.html' %}
+{% block body %}
+{% for users in username_profile_lists %}
+<div class="container-fluid shadow border d-flex mt-2">
+    <a href="/profile/{{users.user}}"><img src="{{users.profileimage.url}}" class="img-thumbnail " height="100px" width="100px" alt="No image Found"></a>
+    <div class="conitainer-fluid ">
+        <a href="/profile/{{users.user}}" class="text-decoration-none" ><h4 class="lead text-success" >@{{users.user}}</h4></a>     
+        <p class="text-success" >{{users.bio}}</p>     
+        <p class="text-success" >{{users.location}}</p>     
+    </div>
+</div>
+{% endfor %}
+{% endblock body %}

@@ -1,0 +1,285 @@
+{% load static %}
+{% block body %}
+{% include 'Myapp/base.html' %}
+<div class="container-fluid mt-2">
+    <!-- messages -->
+    <div >
+        <style>
+            h5{
+                color: red;
+            }
+        </style>
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {%  endfor  %}
+    </div>
+    <div class="row my-2 ">
+        <!-- left-page -->
+        <div class="col-lg-4 col-md-5 ">
+            <div class="cover-image border shadow bg-white p-2">
+                <img src="{% static 'Myapp\images\cover-profile.jpg' %}" class="img-fluid img-thumbnail w-100 ">
+                <div class="profile-image">
+                    <a href="/profile/{{user.username}}"><img class="img-thumbnail rounded-circle w-25 " src="{{user_profile.profileimage.url}}"></a>
+                    <h2 class="text-primary ">{{user.first_name}} {{user.last_name}}</h2>
+                    <h4 class="text-success">{{user_profile.bio}}</h4>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Jobs list</div>
+                                company.com and more
+                            </div>
+                            <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Post</div>
+                                Likes and Comments
+                            </div>
+                            <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">View</div>
+                                Number of person views
+                            </div>
+                            <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="midside my-2 border shadow">
+                <h4 class="text-primary">Experience</h4>
+                <ul>
+                    <li><i class="bi bi-google"></i> Google 3 Years</li>
+                </ul>
+            </div>
+            <div class="downside my-2 border shadow">
+                <h4 class="text-primary"><i class="bi bi-arrow-counterclockwise"></i>Recent Work</h4>
+                <ul>
+                    <li>Big Data Engineer</li>
+                    <li>Software Architect</li>
+                    <li>DevOps Engineer </li>
+                    <li>Cloud Architect </li>
+                    <li>Full-Stack Developer</li>
+                    <li>Artificial Intelligence (AI) Engineer</li>
+                    <li>Product Manager</li>
+                </ul>
+            </div>
+            <!-- Upload section  -->
+            <div class="midside my-2 border shadow">
+                <h4 class="text-primary border-bottom"><i class="bi bi-arrow-counterclockwise"></i>Uploaded Projects
+                </h4>
+                <ul style="list-style: none;" class="p-3">
+                    <li><i class="bi bi-emoji-laughing pe-2"></i>Face detection</li>
+                    <li><i class="bi bi-apple pe-2"></i>Online auction system</li>
+                    <li><i class="bi bi-award pe-2"></i>Evaluation of academic performance</li>
+                    <li><i class="bi bi-android pe-2"></i>e-Authentication system</li>
+                    <li><i class="bi bi-app-indicator pe-2"></i>Cursor movement on object motion</li>
+                    <li><i class="bi bi-emoji-angry pe-2"></i>Crime rate prediction</li>
+                    <li><i class="bi bi-battery-charging pe-2"></i>Android battery saver system</li>
+                    <li><i class="bi bi-code pe-2"></i>Symbol recognition</li>
+                </ul>
+            </div>
+        </div>
+        <!-- middle-page -->
+        <div class="center_page col-lg-4">
+            <!-- <div class="status ">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active " data-bs-interval="10000">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-wrapper">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="{% static 'Myapp\images\avater1.jpg' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make up the bulk of the card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item " data-bs-interval="2000">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-wrapper">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="{% static 'Myapp\images\avater2.jpg' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make up the bulk of the card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item ">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-wrapper">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="{% static 'Myapp\images\avater3.jpg' %}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text">Some quick example text to build on the card title and
+                                                make up the bulk of the card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div> -->
+            <!-- Post sec  -->
+            <form action="upload/" method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <div class="post shadow border">
+                <div class="post_input">
+                    <a href="/profile/{{user.username}}"><img src="{{user_profile.profileimage.url}} "></a>
+                    <textarea rows="2" name="caption" placeholder="write a post here... "></textarea>
+                    <input class="btn btn-success btn-sm " type="submit" name="post-submit" id="post-submit"
+                        value="POST">
+                </div>
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid ">
+                        <a class="navbar-brand" href="#">
+                            <!-- <i class="btn btn-sm border m-0 p-2 bi bi-image-fill ">  Photo </i>
+                            <i class="btn btn-sm border m-0 p-2 bi bi-camera-reels-fill">  Video</i>
+                            <i class="btn btn-sm border m-0 p-2 bi bi-calendar-event-fill">  Event</i>
+                            <i class="btn btn-sm border m-0 p-2 bi bi-emoji-smile-fill">  Feeling /Activity</i> -->
+                            <label for="post_photo"><i class="btn btn-sm border m-0 p-2 bi bi-image-fill ">  Photo </i></label>
+                            <input type="file" name="post_photo" id="post_photo" hidden >
+                            <label for="post_photo"> <i class="btn btn-sm border m-0 p-2 bi bi-camera-reels-fill">  Video</i></label>
+                            <input type="file" name="post_photo" id="post_photo" hidden >
+                            <label for="post_photo"><i class="btn btn-sm border m-0 p-2 bi bi-calendar-event-fill">  Event</i></label>
+                            <input type="file" name="post_photo" id="post_photo" hidden >
+                            <label for="post_photo"><i class="btn btn-sm border m-0 p-2 bi bi-emoji-smile-fill"  >  Feeling /Activity</i></label>
+                            <input type="file" name="post_photo" id="post_photo" hidden >
+                        </a>
+                    </div>
+                </nav>
+            </div>
+            </form>
+            {% for post in post reversed %}
+            <div class="card mt-2" > <!-- style="width: 18rem;"-->
+                <div class="card-body">
+                    <a href="/profile/{{post.user}}" class="text-decoration-none" ><h5 class="card-title">@{{post.user}}</h5></a>
+                    <!-- <p class="card-text text-primary">{{user.first_name}} {{user.last_name}}</p> -->
+                    <p class="card-text">{{post.caption}}</p>
+                    <img src="{{post.image.url}}" class="card-img-top img-thumbnail border " alt="image Could not load">
+                    <div id="feedback_post" class="feedback_post pt-2">
+                        <a class="text-decoration-none " href="/post_like?post_id={{post.uid}} "><i class="bi bi-heart pe-2">{{post.nos_likes}}like</i></a>
+                        <a class="text-decoration-none" href="#"><i class="bi bi-chat text-center pe-2 ">Comments</i></a>
+                        <a class="text-decoration-none" href="#"><i class="bi bi-send pe-2">Share</i></a>
+                        <a class="text-decoration-none " href="{{post.image.url}}" download><i class="bi bi-download">Download</i></a>
+                        {% if post.nos_likes == 0 %}
+                        <p>No likes</p>
+                        {% elif post.nos_likes == 1 %}
+                        <p>Liked by {{post.nos_likes}} person</p>
+                        {% else %}
+                        <p>Liked by {{post.nos_likes}} people</p>
+                        {% endif %}
+                    </div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+
+        <!-- right-page -->
+        <div class="col-lg-4 ">
+            <div class="notes border shadow p-2 ">
+                <h2 class=" text-success">Notes </h2>
+                <div class="input-group-sm mb-3">
+                    <input type="file" class="form-control" id="inputGroupFile02">
+
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                        style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Comments</label>
+                </div>
+            </div>
+            
+
+            <!-- chats section  -->
+            <!-- <div class="charts border border-success">
+                <nav class="navbar navbar-light border-bottom border-success">
+                    <div class="container-fluid">
+                        <a class="navbar-brand w-100" href="#">
+                            <img src="{{user_profile.profileimage.url}}"
+                                class=" img-thumbnail rounded-circle bi-border-outer border-success border-2 "
+                                width="30" height="24"><span class=" h6 p-2">Sandeep Vishwakarma</span>
+                            <span style="padding-left: 20%;"><i
+                                    class="bi bi-chat-right-text btn-outline-success"></i></span>
+                        </a>
+                    </div>
+                </nav>
+                <div class="row  mx-0 ">
+                    <div class="conitainer-fluid col-lg-5 h6 p-0 m-0 ">
+                        <div class="avater  border-bottom  border-success w-100">
+                            <img src="{% static 'Myapp\images\avater1.jpg' %}"
+                                class="  img-thumbnail rounded-circle w-25 ">
+                            <span>Rahul</span>
+                        </div>
+                        <div class="avater  border-bottom border-success w-100">
+                            <img src="{% static 'Myapp\images\avater2.jpg' %}"
+                                class=" img-thumbnail rounded-circle w-25  ">
+                            <span>Raju</span>
+                        </div>
+                        <div class="avater  border-bottom border-success w-100">
+                            <img src="{% static 'Myapp\images\avater3.jpg' %}"
+                                class=" img-thumbnail rounded-circle w-25 ">
+                            <span>Priya</span>
+                        </div>
+                        <div class="avater  border-bottom border-success w-100">
+                            <img src="{% static 'Myapp\images\avater4.jpg' %}"
+                                class=" img-thumbnail rounded-circle w-25 ">
+                            <span>kajal</span>
+                        </div>
+                        <div class="avater  border-bottom border-success w-100">
+                            <img src="{% static 'Myapp\images\avater5.jpg' %}"
+                                class=" img-thumbnail rounded-circle w-25 ">
+                            <span>Jyoti</span>
+                        </div>
+                        <div class="avater w-100">
+                            <img src="{% static 'Myapp\images\avater6.jpg' %}"
+                                class=" img-thumbnail rounded-circle w-25 ">
+                            <span>Riya</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid col-lg-7  border-start  border-success p-0 ">
+                        <div class="border-bottom border-success ">
+                            <img src="{% static 'Myapp\images\avater6.jpg' %}" width="30px"
+                                class=" img-thumbnail rounded-circle ">
+                            <span class=" h6">Raju</span><span class="ps-2 h6 text-success  "><i
+                                    class="text-end">Online...</i></span>
+                        </div>
+                        <div class="container h-100 border-bottom border-success" style=" background-image: url({% static 'Myapp\images\dgetlogo.jpg' %}); background-size: 100%; background-repeat: no-repeat;  background-position: center; filter: blur(8px);
+                        -webkit-filter: blur(1px);">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+        </div>
+    </div>
+
+</div>
+{% endblock body %}

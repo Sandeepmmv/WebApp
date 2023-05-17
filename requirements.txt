@@ -1,0 +1,16 @@
+asgiref==3.5.2
+distlib==0.3.6
+Django==4.1.4
+filelock==3.8.0
+mysql-connector-python==8.0.29
+numpy==1.24.3
+pandas==2.0.1
+php==1.2.1
+Pillow==9.2.0
+platformdirs==2.5.2
+python-dateutil==2.8.2
+pytz==2023.3
+six==1.16.0
+sqlparse==0.4.3
+tzdata==2022.7
+virtualenv==20.16.5

@@ -1,0 +1,91 @@
+{% include 'Myapp/base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'Myapp\css\profile.css' %}">
+{% block body %}
+<div class="container-fluid ">
+<form action="/follow/" method="post">
+        {% csrf_token %}
+    <div class="container-fluid  cover-image1 border shadow bg-white p-2">
+      <img src="{% static 'Myapp\images\cover-profile.jpg' %}" class="cover_img img-thumbnail ">
+        <div class="text">
+          <label >Post: {{user_post_length}}</label>
+          <!-- <label >Likes: {{user_post.nos_likes}}</label> -->
+          <label >Following: {{user_following}} </label>
+          <label >Follower: {{user_follower}}</label>
+          <input type="hidden" value="{{user.username}}" name="follower" >
+          <input type="hidden" value="{{user_obj.username}}"  name="user" >
+          {% if user_obj.username == user.username %}
+          <a href="{% url 'account_setting' %}" class="btn btn-danger text-decoration-none " >Setting</a>
+          {% else %}
+          <button type="submit" class="btn btn-danger" >{{button_text}}</button>
+          {% endif %}
+        </div>
+</form>  
+      <div class="profile-image1 ">
+          <img class="profile_img img-thumbnail rounded-circle " src="{{user_profile.profileimage.url}}">
+          <h2 class="text-primary">  {{user.first_name}} {{user.last_name}}</h2>
+          <h4 class="text-success">@{{user_profile.user.username}}</h4>
+          <h4 class="text-success">{{user_profile.birth_date}}</h4>
+          <h4 class="text-success">{{user_profile.bio}}</h4>
+          <h4 class="text-success">{{user_profile.location}}</h4>
+          <ol class="list-group list-group-numbered">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold">Jobs list</div>
+                      company.com and more
+                  </div>
+                  <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold">Post</div>
+                      Likes and Comments
+                  </div>
+                  <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <div class="fw-bold">View</div>
+                      Number of person views
+                  </div>
+                  <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+          </ol>
+      </div>
+  </div>
+  <div class="midside my-2 border shadow">
+      <h4 class="text-primary">Experience</h4>
+      <ul>
+          <li><i class="bi bi-google"></i> Google 3 Years</li>
+      </ul>
+  </div>
+  <div class="downside my-2 border shadow">
+      <h4 class="text-primary"><i class="bi bi-arrow-counterclockwise"></i>Recent Work</h4>
+      <ul>
+          <li>Big Data Engineer</li>
+          <li>Software Architect</li>
+          <li>DevOps Engineer </li>
+          <li>Cloud Architect </li>
+          <li>Full-Stack Developer</li>
+          <li>Artificial Intelligence (AI) Engineer</li>
+          <li>Product Manager</li>
+      </ul>
+  </div>
+  <!-- Upload section  -->
+  <div class="midside my-2 border shadow">
+      <h4 class="text-primary border-bottom"><i class="bi bi-arrow-counterclockwise"></i>Uploaded Projects
+      </h4>
+      <ul style="list-style: none;" class="p-3">
+          <li><i class="bi bi-emoji-laughing pe-2"></i>Face detection</li>
+          <li><i class="bi bi-apple pe-2"></i>Online auction system</li>
+          <li><i class="bi bi-award pe-2"></i>Evaluation of academic performance</li>
+          <li><i class="bi bi-android pe-2"></i>e-Authentication system</li>
+          <li><i class="bi bi-app-indicator pe-2"></i>Cursor movement on object motion</li>
+          <li><i class="bi bi-emoji-angry pe-2"></i>Crime rate prediction</li>
+          <li><i class="bi bi-battery-charging pe-2"></i>Android battery saver system</li>
+          <li><i class="bi bi-code pe-2"></i>Symbol recognition</li>
+      </ul>
+  </div>
+</div>
+
+{% endblock body %}
